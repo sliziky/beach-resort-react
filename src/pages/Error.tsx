@@ -9,7 +9,9 @@ export const Error = () => {
   return (
     <Hero>
       <Banner title="404" subtitle="Page not found">
-          <Link to="/" className='btn-primary'>Return Home</Link>
+        <Link to="/" className="btn-primary">
+          Return Home
+        </Link>
       </Banner>
     </Hero>
   );

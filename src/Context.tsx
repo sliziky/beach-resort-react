@@ -5,15 +5,18 @@ import { IRoom } from "./model/IRoom";
 const RoomContext = React.createContext<string>("");
 
 interface IProviderState {
-    rooms : IRoom[];
-    sortedRooms : IRoom[];
-    featuredRooms : IRoom[];
-    loading: boolean;
+  rooms: IRoom[];
+  sortedRooms: IRoom[];
+  featuredRooms: IRoom[];
+  loading: boolean;
 }
 
 interface IProviderProps {}
 
-export default class RoomProvider extends Component<IProviderProps, IProviderState> {
+export default class RoomProvider extends Component<
+  IProviderProps,
+  IProviderState
+> {
   state = {
     rooms: [],
     sortedRooms: [],
@@ -22,18 +25,18 @@ export default class RoomProvider extends Component<IProviderProps, IProviderSta
   };
 
   componentDidMount() {
-    let rooms : IRoom[] = this.formatData(items);
-    
+    let rooms: IRoom[] = this.formatData(items);
+
     console.log(rooms);
   }
 
-  formatData(items: any) : IRoom[] {
-    let tempItems : IRoom[] = items.map((item: any) => {
+  formatData(items: any): IRoom[] {
+    let tempItems: IRoom[] = items.map((item: any) => {
       let id = item.sys.id;
       let images = item.fields.images.map(
         (image: any) => image.fields.file.url
       );
-      let room = {...item.fields, images};
+      let room = { ...item.fields, images };
       return room;
     });
     return tempItems;

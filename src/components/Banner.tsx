@@ -6,7 +6,11 @@ interface IBannerProps {
   children: React.ReactNode;
 }
 
-export default function Banner({ children, title, subtitle = "" }: IBannerProps) {
+export default function Banner({
+  children,
+  title,
+  subtitle = "",
+}: IBannerProps) {
   return (
     <div className="banner">
       <h1>{title}</h1>

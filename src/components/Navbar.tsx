@@ -4,11 +4,15 @@ import logo from "./../images/logo.svg";
 import { FaAlignRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default class Navbar extends Component {
+interface INavbarState {
+  isOpen: boolean;
+}
+
+export default class Navbar extends Component<{}, INavbarState> {
   state = {
     isOpen: false,
   };
-  handleToggle = () => {
+  handleToggle = (): void => {
     this.setState({ isOpen: !this.state.isOpen });
   };
   render() {
@@ -17,17 +21,23 @@ export default class Navbar extends Component {
         <div className="nav-center">
           <div className="nav-header">
             <Link to="/">
-                <img src={logo} alt="Beach Resorts"/>
+              <img src={logo} alt="Beach Resorts" />
             </Link>
-            <button type="button" className="nav-btn" onClick={this.handleToggle}>
-                <FaAlignRight className="nav-icon"/>
+            <button
+              type="button"
+              className="nav-btn"
+              onClick={this.handleToggle}
+            >
+              <FaAlignRight className="nav-icon" />
             </button>
           </div>
-          <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
-              <li>
-                  <Link to="/">Home</Link>
-                  <Link to="/rooms">Rooms</Link>
-              </li>
+          <ul
+            className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}
+          >
+            <li>
+              <Link to="/">Home</Link>
+              <Link to="/rooms">Rooms</Link>
+            </li>
           </ul>
         </div>
       </nav>

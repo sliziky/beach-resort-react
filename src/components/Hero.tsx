@@ -8,4 +8,3 @@ interface IHeroProps {
 export default function Hero({ children, hero = "defaultHero" }: IHeroProps) {
   return <header className={hero}>{children}</header>;
 }
-

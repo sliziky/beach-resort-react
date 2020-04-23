@@ -22,7 +22,7 @@ export const Home = () => {
           </Link>
         </Banner>
       </Hero>
-      <Services/>
+      <Services />
       <FeaturedRooms></FeaturedRooms>
     </>
   );
