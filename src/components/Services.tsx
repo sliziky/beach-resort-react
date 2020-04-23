@@ -8,13 +8,16 @@ interface IService {
   info: string;
 }
 
-interface IServices {
+interface IServicesState {
   services: IService[];
 }
 
-interface IProps {}
+interface IServicesProps {}
 
-export default class Services extends Component<IProps, IServices> {
+export default class Services extends Component<
+  IServicesProps,
+  IServicesState
+> {
   state = {
     services: [
       {

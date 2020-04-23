@@ -7,6 +7,8 @@ import Banner from "./../components/Banner";
 import { Link } from "react-router-dom";
 
 import Services from "./../components/Services";
+
+import FeaturedRooms from "./../components/FeaturedRooms";
 export const Home = () => {
   return (
     <>
@@ -20,7 +22,8 @@ export const Home = () => {
           </Link>
         </Banner>
       </Hero>
-      <Services>x1</Services>
+      <Services/>
+      <FeaturedRooms></FeaturedRooms>
     </>
   );
 };
