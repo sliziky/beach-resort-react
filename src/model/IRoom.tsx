@@ -1,4 +1,5 @@
 export interface IRoom {
+  id : number;
   breakfast: boolean;
   capacity: number;
   description: string;

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import items from "./data";
 import { IRoom } from "./model/IRoom";
 
-const RoomContext = React.createContext<string>("");
+const RoomContext = React.createContext<IProviderState | null>(null);
 
-interface IProviderState {
+export interface IProviderState {
   rooms: IRoom[];
   sortedRooms: IRoom[];
   featuredRooms: IRoom[];
@@ -26,6 +26,14 @@ export default class RoomProvider extends Component<
 
   componentDidMount() {
     let rooms: IRoom[] = this.formatData(items);
+    let featuredRooms = rooms.filter((r) => r.featured);
+
+    this.setState({
+      rooms,
+      featuredRooms,
+      sortedRooms:rooms,
+      loading: false,
+    });
 
     console.log(rooms);
   }
@@ -36,14 +44,14 @@ export default class RoomProvider extends Component<
       let images = item.fields.images.map(
         (image: any) => image.fields.file.url
       );
-      let room = { ...item.fields, images };
+      let room = { ...item.fields, images, id };
       return room;
     });
     return tempItems;
   }
   render() {
     return (
-      <RoomContext.Provider value={"hello"}>
+      <RoomContext.Provider value={this.state}>
         {this.props.children}
       </RoomContext.Provider>
     );
