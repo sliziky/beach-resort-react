@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import items from "./data";
 import { IRoom } from "./model/IRoom";
 
-const RoomContext = React.createContext<IProviderState | null>(null);
+const RoomContext = React.createContext<IContext | null>(null);
 
 export interface IProviderState {
   rooms: IRoom[];
   sortedRooms: IRoom[];
   featuredRooms: IRoom[];
   loading: boolean;
+}
+
+export interface IContext extends IProviderState {
+  getRoom (slug : string) :  IRoom | undefined;
 }
 
 interface IProviderProps {}
@@ -49,9 +53,16 @@ export default class RoomProvider extends Component<
     });
     return tempItems;
   }
+
+  getRoom = (slug : string) : IRoom | undefined => {
+    let tempRooms : IRoom[] = [...this.state.rooms];
+    const room : IRoom | undefined = tempRooms.find((room : IRoom) => room.slug === slug);
+    return room;
+  }
+
   render() {
     return (
-      <RoomContext.Provider value={this.state}>
+      <RoomContext.Provider value={{...this.state, getRoom:this.getRoom}}>
         {this.props.children}
       </RoomContext.Provider>
     );
