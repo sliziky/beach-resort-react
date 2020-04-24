@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Services from "./../components/Services";
 
 import FeaturedRooms from "./../components/FeaturedRooms";
+import SimpleButton from "./../components/StyledHero";
 export const Home = () => {
   return (
     <>
@@ -23,7 +24,8 @@ export const Home = () => {
         </Banner>
       </Hero>
       <Services />
-      <FeaturedRooms></FeaturedRooms>
+      <FeaturedRooms/>
+      <SimpleButton>Hello</SimpleButton>
     </>
   );
 };
